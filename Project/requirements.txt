@@ -1,0 +1,133 @@
+# =============================================================================
+# Master's Thesis: Task-Specific NLP Pipelines vs. LLMs — Cross-Lingual NLP
+# University of Trier | Computational Linguistics
+# requirements.txt — pinned for reproducibility
+# Last updated: 2026-03-09
+# Python: 3.10+ (Colab default as of early 2026)
+# =============================================================================
+# Install order matters on Colab. Use the setup notebook cell order.
+# Run: pip install -r requirements.txt --quiet
+
+# -----------------------------------------------------------------------------
+# CORE DATA SCIENCE
+# -----------------------------------------------------------------------------
+numpy==1.26.4
+pandas==2.2.1
+scipy==1.13.0
+scikit-learn==1.4.2
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.20.0
+tqdm==4.66.2
+
+# -----------------------------------------------------------------------------
+# PYTORCH (Colab ships with CUDA-compatible build — do NOT pin torch on Colab;
+# comment this line out and let Colab's pre-installed version take priority)
+# -----------------------------------------------------------------------------
+# torch==2.2.1   # ← COMMENTED OUT: Colab manages this
+# torchvision==0.17.1
+
+# -----------------------------------------------------------------------------
+# HUGGING FACE ECOSYSTEM
+# -----------------------------------------------------------------------------
+transformers==4.40.1
+tokenizers==0.19.1
+datasets==2.19.0
+huggingface-hub==0.22.2
+accelerate==0.29.3
+safetensors==0.4.3
+sentence-transformers==2.7.0
+
+# Model quantization (for running Mistral-7B on free Colab tier)
+bitsandbytes==0.43.1
+
+# -----------------------------------------------------------------------------
+# GERMAN NLP — spaCy + models
+# -----------------------------------------------------------------------------
+spacy==3.7.4
+# NOTE: German model must be installed separately (see setup notebook):
+#   python -m spacy download de_core_news_lg
+# Also available: de_core_news_sm (fast), de_core_news_md (balanced)
+
+# -----------------------------------------------------------------------------
+# MACHINE TRANSLATION
+# -----------------------------------------------------------------------------
+easynmt==2.0.2        # Wrapper for OPUS-MT, NLLB, etc.
+sacremoses==0.1.1     # Tokenization for MarianMT / OPUS-MT
+sentencepiece==0.2.0  # Required by many multilingual models
+
+# -----------------------------------------------------------------------------
+# TOPIC MODELING
+# -----------------------------------------------------------------------------
+bertopic==0.16.2
+hdbscan==0.8.33
+umap-learn==0.5.6
+gensim==4.3.2          # LDA baseline comparison
+
+# -----------------------------------------------------------------------------
+# EVALUATION METRICS
+# -----------------------------------------------------------------------------
+unbabel-comet==2.2.1   # COMET: neural MT quality metric (primary)
+bert-score==0.3.13     # BERTScore: semantic similarity
+sacrebleu==2.4.2       # SacreBLEU: reproducible BLEU scores
+
+# -----------------------------------------------------------------------------
+# NER & LINGUISTIC ANALYSIS
+# -----------------------------------------------------------------------------
+stanza==1.8.0          # Stanford NLP — second NER system for cross-model agreement
+flair==0.13.1          # Third NER system for ensemble validation
+
+# -----------------------------------------------------------------------------
+# STATISTICAL ANALYSIS & VALIDATION
+# -----------------------------------------------------------------------------
+statsmodels==0.14.2    # Time-series trend analysis, regression
+pingouin==0.5.4        # Krippendorff's Alpha, Cohen's Kappa for IRR
+krippendorff==0.6.1    # Standalone Krippendorff's Alpha
+bootstrap-stat==0.1.1  # Bootstrap confidence intervals
+
+# -----------------------------------------------------------------------------
+# REPRODUCIBILITY & EXPERIMENT TRACKING
+# -----------------------------------------------------------------------------
+python-dotenv==1.0.1   # Load .env files for API tokens
+pyyaml==6.0.1          # Config file management
+jsonlines==4.0.0       # JSONL for streaming large corpora
+rich==13.7.1           # Beautiful terminal output / progress display
+
+# -----------------------------------------------------------------------------
+# CORPUS & TEXT UTILITIES
+# -----------------------------------------------------------------------------
+langdetect==1.0.9      # Detect article language (DE/LB/other filtering)
+chardet==5.2.0         # Encoding detection for raw files
+ftfy==6.2.0            # Fix mojibake / encoding issues in German text
+regex==2024.4.16       # Extended regex (handles Unicode better than `re`)
+textstat==0.7.3        # Readability / text complexity metrics
+Levenshtein==0.25.1    # String distance (useful for compound analysis)
+
+# -----------------------------------------------------------------------------
+# NOTEBOOKS & VISUALIZATION
+# -----------------------------------------------------------------------------
+ipywidgets==8.1.2      # Interactive widgets in Colab
+ipython==8.23.0
+
+# -----------------------------------------------------------------------------
+# GERMAN-SPECIFIC: COMPOUND SPLITTER
+# -----------------------------------------------------------------------------
+# CharSplit is NOT on PyPI — install directly from GitHub (see setup notebook):
+#   pip install git+https://github.com/dtuggener/CharSplit.git
+# charSplit==0.5  ← placeholder comment only
+
+# -----------------------------------------------------------------------------
+# HUGGING FACE INFERENCE API CLIENT
+# -----------------------------------------------------------------------------
+huggingface-hub==0.22.2  # already listed above; provides InferenceClient
+
+# =============================================================================
+# INSTALLATION NOTES FOR COLAB FREE TIER
+# =============================================================================
+# 1. bitsandbytes + accelerate are required for 4-bit quantized Mistral-7B
+# 2. flair is large (~500MB) — skip if RAM is tight; fallback is spaCy+Stanza only
+# 3. unbabel-comet downloads ~1.5GB model on first use; cache to Drive
+# 4. easynmt downloads OPUS-MT (~300MB) on first use; cache to Drive
+# 5. de_core_news_lg downloads separately: python -m spacy download de_core_news_lg
+# 6. Never pin torch/torchvision on Colab — use pre-installed CUDA version
+# =============================================================================
