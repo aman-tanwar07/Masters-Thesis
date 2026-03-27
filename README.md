@@ -65,21 +65,4 @@
 ├── .env.example              # Template for API tokens (never commit .env)
 ├── .gitignore
 └── README.md
-```
 
-## Checkpoints
-| Checkpoint | Week | Goal |
-|---|---|---|
-| 0 | 2 | Foundation ready (this week) |
-| 1 | 6 | NER comparison complete |
-| 2 | 9 | Two tasks complete |
-| 3 | 12 | Presentation — minimum viable thesis |
-| 4 | 16 | Extended findings |
-| 5 | 20 | Thesis submitted |
-
-## Reproducibility Commitments
-- Random seed: `42` everywhere (set in `config.yaml`)
-- All expensive computations cached to `data/processed/`
-- No notebook outputs committed to git (`.gitignore` excludes `*.ipynb` outputs)
-- All prompts versioned in `docs/prompt_registry.md`
-- Sample drawn once in `03_stratified_sampling.ipynb` and never redrawn
