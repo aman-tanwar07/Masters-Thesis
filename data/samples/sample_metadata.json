@@ -1,0 +1,23 @@
+{
+  "drawn_at": "2026-03-28T15:53:21.535981",
+  "random_seed": 42,
+  "sample_n": 200,
+  "total_corpus": 1125,
+  "stratified_by": [
+    "year_bin",
+    "source"
+  ],
+  "year_bins": [
+    "2015-2017",
+    "2018-2020",
+    "2021-2023",
+    "2024-2025"
+  ],
+  "sources": [
+    "SZ S\u00fcddeutsche Zeitung",
+    "Luxemburger Wort",
+    "Frankfurter Allgemeine Zeitung",
+    "Trierischer Volksfreund"
+  ],
+  "note": "Sample locked \u2014 do not redraw"
+}
