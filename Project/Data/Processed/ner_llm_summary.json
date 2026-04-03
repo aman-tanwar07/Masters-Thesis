@@ -1,0 +1,19 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "validation_articles": 199,
+  "successful_extractions": 183,
+  "parse_errors": 0,
+  "api_errors": 16,
+  "no_translation": 0,
+  "mean_llm_entities": 9.23,
+  "mean_spacy_entities": 39.55,
+  "mean_stanza_entities": 30.37,
+  "mean_flair_entities": 15.42,
+  "pipeline_fleiss_kappa": 0.717,
+  "label_counts_llm": {
+    "PER": 252,
+    "LOC": 576,
+    "ORG": 603,
+    "MISC": 405
+  }
+}
