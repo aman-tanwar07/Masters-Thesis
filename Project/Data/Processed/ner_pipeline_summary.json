@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-04-03T15:22:58.697423",
+  "total_articles": 1115,
+  "validation_sample": 199,
+  "fleiss_kappa": 0.717,
+  "mean_spacy_entities": 41.12,
+  "total_spacy_entities": 45847,
+  "total_unique_entities": 7656,
+  "full_agreement_entities": 1311,
+  "partial_agreement": 1569,
+  "no_agreement": 4776
+}

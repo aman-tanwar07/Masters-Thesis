@@ -1,0 +1,111 @@
+# =============================================================================
+# config.yaml — Global configuration for thesis pipeline
+# Edit paths and hyperparameters here; import in all notebooks/scripts.
+# =============================================================================
+
+project:
+  name: "nlp-pipeline-vs-llm-thesis"
+  author: "University of Trier"
+  random_seed: 42  # Used everywhere — numpy, torch, sklearn, transformers
+
+# -----------------------------------------------------------------------------
+# PATHS (relative to project root; override in notebooks via config['paths'])
+# -----------------------------------------------------------------------------
+paths:
+  raw_data:       "data/raw/"
+  processed_data: "data/processed/"
+  samples:        "data/samples/"
+  outputs:        "outputs/"
+  figures:        "outputs/figures/"
+  cache:          "data/processed/cache/"   # disk cache for translations etc.
+
+# -----------------------------------------------------------------------------
+# CORPUS
+# -----------------------------------------------------------------------------
+corpus:
+  expected_min_articles: 900
+  expected_max_articles: 1100
+  language: "de"
+  date_range: ["2015-01-01", "2025-12-31"]
+  encoding: "utf-8"
+  text_column: "text"          # adjust to match your CSV column name
+  date_column: "date"          # adjust to match your CSV column name
+  source_column: "source"      # adjust to match your CSV column name
+
+# -----------------------------------------------------------------------------
+# VALIDATION SAMPLE
+# -----------------------------------------------------------------------------
+sampling:
+  total_n: 200
+  stratify_by: ["year_bin", "source_type", "article_length_bin"]
+  year_bins: [[2015, 2017], [2018, 2020], [2021, 2023], [2024, 2025]]
+  length_bins: [0, 300, 600, 99999]  # words: short / medium / long
+  sample_seed: 42  # locked — never change after Week 1
+
+# -----------------------------------------------------------------------------
+# TRANSLATION
+# -----------------------------------------------------------------------------
+translation:
+  primary_model: "opus-mt"       # via EasyNMT
+  fallback_model: "nllb-200-distilled-600M"
+  source_lang: "de"
+  target_lang: "en"
+  comet_quality_threshold: 0.70  # flag articles below this for review
+  batch_size: 32
+
+# -----------------------------------------------------------------------------
+# NER PIPELINE
+# -----------------------------------------------------------------------------
+ner:
+  spacy_model: "de_core_news_lg"
+  stanza_lang: "de"
+  flair_model: "flair/ner-german-large"
+  entity_types: ["PER", "ORG", "LOC", "MISC"]
+  # Cross-model agreement thresholds
+  full_agreement_threshold: 3    # all 3 models agree → high confidence
+  partial_agreement_threshold: 2 # 2/3 agree → flag for review
+
+# -----------------------------------------------------------------------------
+# TOPIC MODELING
+# -----------------------------------------------------------------------------
+topics:
+  bertopic_embedding_model: "paraphrase-multilingual-MiniLM-L12-v2"
+  bertopic_min_topic_size: 10
+  bertopic_nr_topics: "auto"
+  lda_num_topics: 15
+  lda_passes: 10
+  temporal_bins: "year"  # aggregate by year for temporal trend analysis
+
+# -----------------------------------------------------------------------------
+# LLM BASELINES
+# -----------------------------------------------------------------------------
+llm:
+  primary_model: "meta-llama/Llama-3.1-8B-Instruct"
+  fallback_model: "Qwen/Qwen2.5-7B-Instruct"
+  provider: "together"
+  quantization: "4bit"           # bitsandbytes 4-bit for Colab free tier
+  temperature: 0.0               # deterministic for classification
+  consistency_temperature: 0.7   # for self-consistency sampling
+  consistency_n_runs: 10         # sample k outputs for majority vote
+  consistency_agreement_threshold: 0.80  # flag below 80% agreement
+  max_new_tokens: 256
+  hf_inference_api: true         # use HF Inference API (free) vs local
+
+# -----------------------------------------------------------------------------
+# EVALUATION
+# -----------------------------------------------------------------------------
+evaluation:
+  comet_model: "Unbabel/wmt22-comet-da"
+  bertscore_model: "bert-base-multilingual-cased"
+  bootstrap_n_resamples: 2000
+  bootstrap_ci: 0.95
+  kappa_min_exploratory: 0.60
+  kappa_min_confirmatory: 0.80
+
+# -----------------------------------------------------------------------------
+# COLAB-SPECIFIC
+# -----------------------------------------------------------------------------
+colab:
+  drive_mount_path: "/content/drive/MyDrive/thesis/"
+  checkpoint_every_n: 100   # save cache every N articles processed
+  session_safe_batch_size: 50  # conservative batch to survive timeouts

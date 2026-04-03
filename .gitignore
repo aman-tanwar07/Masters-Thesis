@@ -1,0 +1,9 @@
+Project/Data/Processed/cache/
+Project/Data/Processed/cache/ner/
+*.pkl
+*.csv
+*.txt
+Project/Outputs/Figures/
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+__pycache__/
