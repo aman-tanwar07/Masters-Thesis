@@ -1,0 +1,13 @@
+{
+  "n_articles_full_corpus": 1115,
+  "n_topics_discovered": 30,
+  "n_outliers": 308,
+  "outlier_rate": 0.276,
+  "cv_coherence": 0.3971,
+  "topic_diversity": 0.84,
+  "llm_classification": "not_completed",
+  "llm_reason": "API credit exhaustion across all free-tier providers",
+  "n_comparison_articles": 0,
+  "llm_exact_match_rate": null,
+  "cohens_kappa": null
+}
