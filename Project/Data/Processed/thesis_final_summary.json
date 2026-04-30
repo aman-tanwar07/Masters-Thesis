@@ -1,0 +1,82 @@
+{
+  "thesis_title": "Task-Specific NLP Pipelines vs LLMs for Cross-Lingual Text Analysis",
+  "corpus": {
+    "total_articles": 1115,
+    "validation_sample": 199,
+    "llm_overlap": 183,
+    "sources": 4,
+    "date_range": "2015-2025",
+    "language": "German"
+  },
+  "ner_results": {
+    "gold_standard": "Full cross-model agreement (Fleiss kappa=0.717)",
+    "n_gold_entities": 1198,
+    "macro_f1": {
+      "spaCy (DE)": 0.3936,
+      "Stanza (DE)": 0.5197,
+      "Flair (DE)": 0.7166,
+      "Qwen (EN)": 0.1907
+    },
+    "bootstrap_ci_95": {
+      "spaCy (DE)": {
+        "lower": 0.3683,
+        "upper": 0.4197
+      },
+      "Stanza (DE)": {
+        "lower": 0.4879,
+        "upper": 0.552
+      },
+      "Flair (DE)": {
+        "lower": 0.6851,
+        "upper": 0.7459
+      },
+      "Qwen (EN)": {
+        "lower": 0.1608,
+        "upper": 0.2224
+      }
+    },
+    "per_label_f1": {
+      "spaCy (DE)": {
+        "PER": 0.5504,
+        "LOC": 0.3991,
+        "ORG": 0.373,
+        "MISC": 0.0354
+      },
+      "Stanza (DE)": {
+        "PER": 0.6331,
+        "LOC": 0.5414,
+        "ORG": 0.3605,
+        "MISC": 0.1434
+      },
+      "Flair (DE)": {
+        "PER": 0.9224,
+        "LOC": 0.8223,
+        "ORG": 0.5917,
+        "MISC": 0.1852
+      },
+      "Qwen (EN)": {
+        "PER": 0.3947,
+        "LOC": 0.2908,
+        "ORG": 0.2256,
+        "MISC": 0.0244
+      }
+    },
+    "translation_quality_effect_p": 0.3034,
+    "llm_excluded": 16,
+    "llm_exclusion_reason": "API credit exhaustion"
+  },
+  "topic_modeling_results": {
+    "n_articles_full_corpus": 1115,
+    "n_topics_discovered": 30,
+    "n_outliers": 308,
+    "outlier_rate": 0.276,
+    "cv_coherence": 0.3971,
+    "topic_diversity": 0.84,
+    "llm_classification": "not_completed",
+    "llm_reason": "API credit exhaustion across all free-tier providers",
+    "n_comparison_articles": 0,
+    "llm_exact_match_rate": null,
+    "cohens_kappa": null
+  },
+  "key_finding": "Pipeline systems outperform LLM on NER (Flair F1=0.717 vs Qwen F1=0.191) while operating on German directly, with higher transparency, reproducibility, and no API dependencies."
+}
