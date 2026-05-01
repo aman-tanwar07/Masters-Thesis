@@ -1,0 +1,293 @@
+{
+  "temporal_f1": [
+    {
+      "year_bin": "2015-2017",
+      "system": "Flair (DE)",
+      "mean": 0.694,
+      "std": 0.216,
+      "count": 47
+    },
+    {
+      "year_bin": "2015-2017",
+      "system": "Qwen (EN)",
+      "mean": 0.191,
+      "std": 0.216,
+      "count": 47
+    },
+    {
+      "year_bin": "2015-2017",
+      "system": "Stanza (DE)",
+      "mean": 0.558,
+      "std": 0.245,
+      "count": 47
+    },
+    {
+      "year_bin": "2015-2017",
+      "system": "spaCy (DE)",
+      "mean": 0.431,
+      "std": 0.202,
+      "count": 47
+    },
+    {
+      "year_bin": "2018-2020",
+      "system": "Flair (DE)",
+      "mean": 0.719,
+      "std": 0.244,
+      "count": 50
+    },
+    {
+      "year_bin": "2018-2020",
+      "system": "Qwen (EN)",
+      "mean": 0.204,
+      "std": 0.221,
+      "count": 50
+    },
+    {
+      "year_bin": "2018-2020",
+      "system": "Stanza (DE)",
+      "mean": 0.515,
+      "std": 0.231,
+      "count": 50
+    },
+    {
+      "year_bin": "2018-2020",
+      "system": "spaCy (DE)",
+      "mean": 0.391,
+      "std": 0.181,
+      "count": 50
+    },
+    {
+      "year_bin": "2021-2023",
+      "system": "Flair (DE)",
+      "mean": 0.735,
+      "std": 0.195,
+      "count": 63
+    },
+    {
+      "year_bin": "2021-2023",
+      "system": "Qwen (EN)",
+      "mean": 0.191,
+      "std": 0.212,
+      "count": 63
+    },
+    {
+      "year_bin": "2021-2023",
+      "system": "Stanza (DE)",
+      "mean": 0.506,
+      "std": 0.209,
+      "count": 63
+    },
+    {
+      "year_bin": "2021-2023",
+      "system": "spaCy (DE)",
+      "mean": 0.374,
+      "std": 0.17,
+      "count": 63
+    },
+    {
+      "year_bin": "2024-2025",
+      "system": "Flair (DE)",
+      "mean": 0.706,
+      "std": 0.162,
+      "count": 23
+    },
+    {
+      "year_bin": "2024-2025",
+      "system": "Qwen (EN)",
+      "mean": 0.159,
+      "std": 0.195,
+      "count": 23
+    },
+    {
+      "year_bin": "2024-2025",
+      "system": "Stanza (DE)",
+      "mean": 0.488,
+      "std": 0.207,
+      "count": 23
+    },
+    {
+      "year_bin": "2024-2025",
+      "system": "spaCy (DE)",
+      "mean": 0.378,
+      "std": 0.194,
+      "count": 23
+    }
+  ],
+  "source_f1": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "system": "Flair (DE)",
+      "mean": 0.668,
+      "std": 0.287,
+      "count": 46
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "system": "Qwen (EN)",
+      "mean": 0.111,
+      "std": 0.163,
+      "count": 46
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "system": "Stanza (DE)",
+      "mean": 0.46,
+      "std": 0.254,
+      "count": 46
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "system": "spaCy (DE)",
+      "mean": 0.323,
+      "std": 0.202,
+      "count": 46
+    },
+    {
+      "source": "Luxemburger Wort",
+      "system": "Flair (DE)",
+      "mean": 0.76,
+      "std": 0.12,
+      "count": 58
+    },
+    {
+      "source": "Luxemburger Wort",
+      "system": "Qwen (EN)",
+      "mean": 0.186,
+      "std": 0.202,
+      "count": 58
+    },
+    {
+      "source": "Luxemburger Wort",
+      "system": "Stanza (DE)",
+      "mean": 0.55,
+      "std": 0.173,
+      "count": 58
+    },
+    {
+      "source": "Luxemburger Wort",
+      "system": "spaCy (DE)",
+      "mean": 0.415,
+      "std": 0.144,
+      "count": 58
+    },
+    {
+      "source": "SZ S\u00fcddeutsche Zeitung",
+      "system": "Flair (DE)",
+      "mean": 0.742,
+      "std": 0.209,
+      "count": 44
+    },
+    {
+      "source": "SZ S\u00fcddeutsche Zeitung",
+      "system": "Qwen (EN)",
+      "mean": 0.225,
+      "std": 0.23,
+      "count": 44
+    },
+    {
+      "source": "SZ S\u00fcddeutsche Zeitung",
+      "system": "Stanza (DE)",
+      "mean": 0.514,
+      "std": 0.234,
+      "count": 44
+    },
+    {
+      "source": "SZ S\u00fcddeutsche Zeitung",
+      "system": "spaCy (DE)",
+      "mean": 0.395,
+      "std": 0.187,
+      "count": 44
+    },
+    {
+      "source": "Trierischer Volksfreund",
+      "system": "Flair (DE)",
+      "mean": 0.677,
+      "std": 0.197,
+      "count": 35
+    },
+    {
+      "source": "Trierischer Volksfreund",
+      "system": "Qwen (EN)",
+      "mean": 0.261,
+      "std": 0.238,
+      "count": 35
+    },
+    {
+      "source": "Trierischer Volksfreund",
+      "system": "Stanza (DE)",
+      "mean": 0.555,
+      "std": 0.237,
+      "count": 35
+    },
+    {
+      "source": "Trierischer Volksfreund",
+      "system": "spaCy (DE)",
+      "mean": 0.448,
+      "std": 0.199,
+      "count": 35
+    }
+  ],
+  "compound_stats": {
+    "mean_density": 10.756,
+    "std_density": 2.539,
+    "top_10_compounds": [
+      [
+        "menschen",
+        407
+      ],
+      [
+        "beispiel",
+        330
+      ],
+      [
+        "millionen",
+        302
+      ],
+      [
+        "unternehmen",
+        294
+      ],
+      [
+        "wohnungen",
+        274
+      ],
+      [
+        "nachhaltigkeit",
+        263
+      ],
+      [
+        "entwicklung",
+        252
+      ],
+      [
+        "quadratmeter",
+        183
+      ],
+      [
+        "architekten",
+        167
+      ],
+      [
+        "wohnraum",
+        167
+      ]
+    ],
+    "compound_vs_llm_f1_r": 0.052,
+    "compound_vs_llm_f1_p": 0.4823,
+    "compound_vs_flair_f1_r": -0.193
+  },
+  "sustainability_compounds": {
+    "mean_sust_compounds": {
+      "2015-2017": 0.996,
+      "2018-2020": 1.05,
+      "2021-2023": 1.651,
+      "2024-2025": 1.608
+    },
+    "mean_sust_rate": {
+      "2015-2017": 0.016,
+      "2018-2020": 0.015,
+      "2021-2023": 0.023,
+      "2024-2025": 0.018
+    }
+  }
+}
