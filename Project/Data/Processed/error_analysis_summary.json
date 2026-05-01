@@ -1,0 +1,84 @@
+{
+  "total_gold_entities": 1311,
+  "aggregate_errors": {
+    "tp": {
+      "Flair (DE)": 1198,
+      "Llama 70B": 733,
+      "Qwen 7B": 360,
+      "Stanza (DE)": 1198,
+      "spaCy (DE)": 1198
+    },
+    "fp": {
+      "Flair (DE)": 780,
+      "Llama 70B": 2210,
+      "Qwen 7B": 1213,
+      "Stanza (DE)": 2412,
+      "spaCy (DE)": 4117
+    },
+    "fn": {
+      "Flair (DE)": 0,
+      "Llama 70B": 465,
+      "Qwen 7B": 838,
+      "Stanza (DE)": 0,
+      "spaCy (DE)": 0
+    },
+    "label_errors": {
+      "Flair (DE)": 0,
+      "Llama 70B": 28,
+      "Qwen 7B": 22,
+      "Stanza (DE)": 0,
+      "spaCy (DE)": 0
+    },
+    "hallucinations": {
+      "Flair (DE)": 237,
+      "Llama 70B": 59,
+      "Qwen 7B": 44,
+      "Stanza (DE)": 927,
+      "spaCy (DE)": 2791
+    }
+  },
+  "hallucinations": {
+    "qwen_7b": 811,
+    "llama_70b": 1347
+  },
+  "fn_label_distribution": {
+    "flair": {
+      "PER": 0,
+      "LOC": 0,
+      "ORG": 0,
+      "MISC": 0
+    },
+    "qwen_7b": {
+      "PER": 0.358,
+      "LOC": 0.458,
+      "ORG": 0.166,
+      "MISC": 0.018
+    },
+    "llama_70b": {
+      "PER": 0.252,
+      "LOC": 0.546,
+      "ORG": 0.178,
+      "MISC": 0.024
+    }
+  },
+  "per_label_f1": {
+    "Flair (DE)": {
+      "PER": 0.922,
+      "LOC": 0.822,
+      "ORG": 0.592,
+      "MISC": 0.185
+    },
+    "Qwen 7B": {
+      "PER": 0.395,
+      "LOC": 0.291,
+      "ORG": 0.226,
+      "MISC": 0.024
+    },
+    "Llama 70B": {
+      "PER": 0.63,
+      "LOC": 0.365,
+      "ORG": 0.25,
+      "MISC": 0.033
+    }
+  }
+}
