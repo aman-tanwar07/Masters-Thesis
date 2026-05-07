@@ -1,0 +1,281 @@
+{
+  "total_checks": 48,
+  "passed": 45,
+  "failed": 3,
+  "failed_checks": [
+    {
+      "name": "Llama DE predicts more entities than Llama EN",
+      "notes": "DE=15.3 vs EN=16.1"
+    },
+    {
+      "name": "Less than 10% articles have zero entities (Qwen)",
+      "notes": "36.6% zero"
+    },
+    {
+      "name": "Flair TP = total gold entities (FN=0 artefact confirmed)",
+      "notes": "Flair TP=1198, gold=1311"
+    }
+  ],
+  "all_checks": [
+    {
+      "name": "All required files present",
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "Corpus size = 1115",
+      "passed": true,
+      "notes": "Got 1115"
+    },
+    {
+      "name": "All 4 sources present",
+      "passed": true,
+      "notes": "Sources: ['Luxemburger Wort', 'Frankfurter Allgemeine Zeitung', 'SZ S\u00fcddeutsche Zeitung', 'Trierischer Volksfreund']"
+    },
+    {
+      "name": "Year range 2015-2025",
+      "passed": true,
+      "notes": "2015\u20132025"
+    },
+    {
+      "name": "All articles German (de)",
+      "passed": true,
+      "notes": "Non-German: 0"
+    },
+    {
+      "name": "Validation sample = 199",
+      "passed": true,
+      "notes": "Got 199"
+    },
+    {
+      "name": "Gold entity count = 1311",
+      "passed": true,
+      "notes": "Got 1311"
+    },
+    {
+      "name": "All gold articles are in validation sample",
+      "passed": true,
+      "notes": "0 gold articles outside validation sample"
+    },
+    {
+      "name": "All 4 entity types in gold",
+      "passed": true,
+      "notes": "Labels: ['LOC', 'PER', 'ORG', 'MISC']"
+    },
+    {
+      "name": "Gold standard artefact documented",
+      "passed": true,
+      "notes": "Pipeline FN=0 is expected \u2014 gold built from pipeline agreement"
+    },
+    {
+      "name": "Qwen processed 183 articles",
+      "passed": true,
+      "notes": "Got 183"
+    },
+    {
+      "name": "Qwen failed 16 articles",
+      "passed": true,
+      "notes": "Got 16"
+    },
+    {
+      "name": "API failures not concentrated in one source",
+      "passed": true,
+      "notes": "Max failures in one source: 6"
+    },
+    {
+      "name": "Llama EN processed all 183 articles",
+      "passed": true,
+      "notes": "Got 183"
+    },
+    {
+      "name": "Llama DE processed all 183 articles",
+      "passed": true,
+      "notes": "Got 183"
+    },
+    {
+      "name": "Llama EN and DE cover identical articles",
+      "passed": true,
+      "notes": "Mismatch: EN-DE=0, DE-EN=0"
+    },
+    {
+      "name": "Ablation uses same 183 articles as NER comparison",
+      "passed": true,
+      "notes": "Ablation n=183"
+    },
+    {
+      "name": "All pipeline systems cover 183 articles in comparison",
+      "passed": true,
+      "notes": "Min: 183"
+    },
+    {
+      "name": "spaCy predicts more than gold (over-extraction expected)",
+      "passed": true,
+      "notes": "spaCy=39.6 vs gold=6.9"
+    },
+    {
+      "name": "Llama DE predicts more entities than Llama EN",
+      "passed": false,
+      "notes": "DE=15.3 vs EN=16.1"
+    },
+    {
+      "name": "Less than 10% articles have zero entities (Qwen)",
+      "passed": false,
+      "notes": "36.6% zero"
+    },
+    {
+      "name": "Less than 10% articles have zero entities (Llama DE)",
+      "passed": true,
+      "notes": "1.1% zero"
+    },
+    {
+      "name": "Llama EN F1 consistent (saved vs recomputed)",
+      "passed": true,
+      "notes": "Diff: 0.0000"
+    },
+    {
+      "name": "Llama DE F1 consistent (saved vs recomputed)",
+      "passed": true,
+      "notes": "Diff: 0.0000"
+    },
+    {
+      "name": "Flair F1 consistent across files",
+      "passed": true,
+      "notes": "Diff: 0.0000"
+    },
+    {
+      "name": "Llama DE F1 > Llama EN F1 (German input helps)",
+      "passed": true,
+      "notes": "DE=0.454 vs EN=0.340"
+    },
+    {
+      "name": "Flair F1 > Llama 70B DE F1 (pipeline advantage holds)",
+      "passed": true,
+      "notes": "Flair=0.717 vs LlamaDE=0.454"
+    },
+    {
+      "name": "BERTopic assignments cover full corpus",
+      "passed": true,
+      "notes": "Got 1115"
+    },
+    {
+      "name": "Outlier rate matches summary (27.6%)",
+      "passed": true,
+      "notes": "Got 0.276 vs saved 0.276"
+    },
+    {
+      "name": "Topic comparison uses ~90 articles",
+      "passed": true,
+      "notes": "Got 90"
+    },
+    {
+      "name": "Topic comparison n matches saved summary",
+      "passed": true,
+      "notes": "Recomputed=90 vs saved=90"
+    },
+    {
+      "name": "Topic Kappa in valid range (0-1)",
+      "passed": true,
+      "notes": "Got 0.4034"
+    },
+    {
+      "name": "Topic Kappa indicates at least slight agreement (>0.2)",
+      "passed": true,
+      "notes": "Got 0.4034"
+    },
+    {
+      "name": "BERTScore available for validation sample",
+      "passed": true,
+      "notes": "199/199 articles"
+    },
+    {
+      "name": "~91 articles below 0.75 threshold",
+      "passed": true,
+      "notes": "Got 91 low quality"
+    },
+    {
+      "name": "Mean BERTScore ~0.752",
+      "passed": true,
+      "notes": "Got 0.7516"
+    },
+    {
+      "name": "Low quality translations in all sources",
+      "passed": true,
+      "notes": "Low quality distributed across sources"
+    },
+    {
+      "name": "Translation effect is positive (DE > EN)",
+      "passed": true,
+      "notes": "F1 gain = +0.1141"
+    },
+    {
+      "name": "Translation effect is statistically significant",
+      "passed": true,
+      "notes": "p = 0.0"
+    },
+    {
+      "name": "Pipeline advantage persists even with German input",
+      "passed": true,
+      "notes": "Remaining gap = 0.2625"
+    },
+    {
+      "name": "LOC shows largest improvement with German input",
+      "passed": true,
+      "notes": "Largest gain: LOC (+0.224)"
+    },
+    {
+      "name": "Decomposition adds up to total gap",
+      "passed": true,
+      "notes": "Sum=0.5259 vs expected=0.5259"
+    },
+    {
+      "name": "Fleiss Kappa consistent (0.717)",
+      "passed": true,
+      "notes": "Hard-coded from notebook 03 output"
+    },
+    {
+      "name": "spaCy (DE) F1 consistent (CSV vs JSON)",
+      "passed": true,
+      "notes": "CSV=0.3936 JSON=0.3936"
+    },
+    {
+      "name": "Stanza (DE) F1 consistent (CSV vs JSON)",
+      "passed": true,
+      "notes": "CSV=0.5197 JSON=0.5197"
+    },
+    {
+      "name": "Flair (DE) F1 consistent (CSV vs JSON)",
+      "passed": true,
+      "notes": "CSV=0.7166 JSON=0.7166"
+    },
+    {
+      "name": "Flair TP = total gold entities (FN=0 artefact confirmed)",
+      "passed": false,
+      "notes": "Flair TP=1198, gold=1311"
+    },
+    {
+      "name": "Thesis summary Flair F1 consistent",
+      "passed": true,
+      "notes": "Thesis=0.7166 vs nb05=0.7166"
+    }
+  ],
+  "key_numbers": {
+    "corpus_size": 1115,
+    "validation_sample": 199,
+    "llm_overlap": 183,
+    "api_failures": 16,
+    "gold_entities": 1311,
+    "fleiss_kappa": 0.717,
+    "flair_f1": 0.7166,
+    "stanza_f1": 0.5197,
+    "spacy_f1": 0.3936,
+    "qwen_7b_f1": 0.1907,
+    "llama_70b_en_f1": 0.34,
+    "llama_70b_de_f1": 0.4541,
+    "translation_effect": 0.1141,
+    "translation_p": 0.0,
+    "remaining_pipeline_gap": 0.2625,
+    "bertopic_topics": 30,
+    "bertopic_cv": 0.3971,
+    "topic_kappa": 0.4034
+  }
+}
