@@ -1,0 +1,29 @@
+{
+  "model": "llama-3.3-70b-versatile",
+  "n_articles": 183,
+  "llama_70b_de": {
+    "macro_f1": 0.4541,
+    "macro_precision": 0.349,
+    "macro_recall": 0.7418,
+    "ci_lower": 0.423,
+    "ci_upper": 0.4841,
+    "per_label_f1": {
+      "PER": 0.634,
+      "LOC": 0.589,
+      "ORG": 0.297,
+      "MISC": 0.049
+    }
+  },
+  "comparison": {
+    "flair_de": 0.7166,
+    "llama_70b_en": 0.34,
+    "llama_70b_de": 0.4541
+  },
+  "translation_effect": {
+    "f1_gain": 0.1141,
+    "wilcoxon_p": 0.0,
+    "significant": true
+  },
+  "remaining_pipeline_gap": 0.2625,
+  "flair_vs_llama_de_p": 0.0
+}
