@@ -1,0 +1,568 @@
+{
+  "notebook": "14_dual_gold_standard",
+  "generated_at": "2026-06-03T11:18:58.204889",
+  "n_articles": 159,
+  "article_set_note": "Intersection of all four LLM DE runs. Llama 70B DE is binding constraint. All evaluations use identical article set for direct comparability.",
+  "inter_system_agreement": {
+    "pipeline_kappa": 0.717,
+    "llm_top3_de_kappa": 0.103,
+    "llm_all4_de_kappa": 0.184,
+    "interpretation": "Pipeline \u03ba=0.717 reflects shared GermEval annotation conventions. LLM \u03ba=0.103 reflects absence of shared convention \u2014 LLMs receive identical prompts but make independent boundary decisions. LLM gold (3/3) captures only unambiguous entities. LLM gold (2/3) is the sensitivity check with more coverage."
+  },
+  "gold_standards": {
+    "pipeline_gold_de": {
+      "description": "Full spaCy+Stanza+Flair agreement \u2014 loaded from nb03",
+      "n_entities": 1013,
+      "mean_per_art": 6.4,
+      "label_dist": {
+        "LOC": 437,
+        "PER": 367,
+        "ORG": 191,
+        "MISC": 18
+      }
+    },
+    "llm_gold_de_3of3": {
+      "description": "Full Scout17B+Qwen3+Llama70B DE agreement (3/3)",
+      "n_entities": 1644,
+      "mean_per_art": 10.3,
+      "label_dist": {
+        "LOC": 613,
+        "ORG": 514,
+        "PER": 426,
+        "MISC": 91
+      }
+    },
+    "llm_gold_de_2of3": {
+      "description": "Majority Scout17B+Qwen3+Llama70B DE agreement (2/3)",
+      "n_entities": 2433,
+      "mean_per_art": 15.3,
+      "label_dist": {
+        "MISC": 301,
+        "LOC": 841,
+        "ORG": 793,
+        "PER": 498
+      }
+    },
+    "llm_gold_en_3of3": {
+      "description": "Full Scout17B+Qwen3+Llama70B EN agreement (3/3)",
+      "n_entities": 1667,
+      "mean_per_art": 10.5,
+      "label_dist": {
+        "PER": 419,
+        "ORG": 517,
+        "LOC": 625,
+        "MISC": 106
+      }
+    }
+  },
+  "gold_overlap_jaccard": 0.3605,
+  "f1_results": {
+    "spaCy (pipeline)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2538,
+        "R": 0.9497,
+        "F1": 0.3842,
+        "per_label": {
+          "ORG": 0.3684,
+          "PER": 0.5421,
+          "MISC": 0.0357,
+          "LOC": 0.3916
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.2842,
+        "R": 0.6841,
+        "F1": 0.3912,
+        "per_label": {
+          "ORG": 0.3588,
+          "PER": 0.5548,
+          "MISC": 0.0481,
+          "LOC": 0.4352
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.353,
+        "R": 0.6073,
+        "F1": 0.435,
+        "per_label": {
+          "ORG": 0.4161,
+          "PER": 0.5993,
+          "MISC": 0.0992,
+          "LOC": 0.5046
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.2197,
+        "R": 0.4951,
+        "F1": 0.297,
+        "per_label": {
+          "ORG": 0.2627,
+          "PER": 0.5405,
+          "MISC": 0.0347,
+          "LOC": 0.2752
+        }
+      }
+    },
+    "Stanza (pipeline)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.3772,
+        "R": 0.9497,
+        "F1": 0.513,
+        "per_label": {
+          "ORG": 0.3583,
+          "PER": 0.6295,
+          "MISC": 0.1475,
+          "LOC": 0.5395
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.4394,
+        "R": 0.7178,
+        "F1": 0.5319,
+        "per_label": {
+          "ORG": 0.4939,
+          "PER": 0.6433,
+          "MISC": 0.1577,
+          "LOC": 0.5735
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.5345,
+        "R": 0.6254,
+        "F1": 0.5645,
+        "per_label": {
+          "ORG": 0.5635,
+          "PER": 0.6847,
+          "MISC": 0.1518,
+          "LOC": 0.6265
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.3455,
+        "R": 0.5393,
+        "F1": 0.4109,
+        "per_label": {
+          "ORG": 0.3836,
+          "PER": 0.624,
+          "MISC": 0.1024,
+          "LOC": 0.3717
+        }
+      }
+    },
+    "Flair (pipeline)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.5889,
+        "R": 0.9497,
+        "F1": 0.7103,
+        "per_label": {
+          "ORG": 0.5913,
+          "PER": 0.9175,
+          "MISC": 0.1885,
+          "LOC": 0.8222
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.5364,
+        "R": 0.5446,
+        "F1": 0.5209,
+        "per_label": {
+          "ORG": 0.4644,
+          "PER": 0.6147,
+          "MISC": 0.2652,
+          "LOC": 0.6102
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.6715,
+        "R": 0.4769,
+        "F1": 0.5363,
+        "per_label": {
+          "ORG": 0.4968,
+          "PER": 0.6316,
+          "MISC": 0.2954,
+          "LOC": 0.6217
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.4185,
+        "R": 0.4185,
+        "F1": 0.4019,
+        "per_label": {
+          "ORG": 0.3621,
+          "PER": 0.6033,
+          "MISC": 0.2437,
+          "LOC": 0.4061
+        }
+      }
+    },
+    "llama-3.1-8b-instant (LLM DE)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2452,
+        "R": 0.6665,
+        "F1": 0.3374,
+        "per_label": {
+          "ORG": 0.2554,
+          "PER": 0.6044,
+          "MISC": 0.0133,
+          "LOC": 0.5098
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.4133,
+        "R": 0.7387,
+        "F1": 0.5021,
+        "per_label": {
+          "ORG": 0.5761,
+          "PER": 0.7995,
+          "MISC": 0.0782,
+          "LOC": 0.6471
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.5199,
+        "R": 0.6737,
+        "F1": 0.5599,
+        "per_label": {
+          "ORG": 0.6439,
+          "PER": 0.8402,
+          "MISC": 0.198,
+          "LOC": 0.6904
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.3029,
+        "R": 0.5149,
+        "F1": 0.3628,
+        "per_label": {
+          "ORG": 0.3907,
+          "PER": 0.8083,
+          "MISC": 0.0608,
+          "LOC": 0.4108
+        }
+      }
+    },
+    "llama-4-scout-17b-16 (LLM DE)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.3222,
+        "R": 0.7689,
+        "F1": 0.4341,
+        "per_label": {
+          "ORG": 0.2956,
+          "PER": 0.6273,
+          "MISC": 0.053,
+          "LOC": 0.5691
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.636,
+        "R": 0.956,
+        "F1": 0.7486,
+        "per_label": {
+          "ORG": 0.7883,
+          "PER": 0.9231,
+          "MISC": 0.373,
+          "LOC": 0.8092
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.8288,
+        "R": 0.888,
+        "F1": 0.8526,
+        "per_label": {
+          "ORG": 0.8528,
+          "PER": 0.9568,
+          "MISC": 0.6819,
+          "LOC": 0.9007
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.4277,
+        "R": 0.6078,
+        "F1": 0.4891,
+        "per_label": {
+          "ORG": 0.4621,
+          "PER": 0.8755,
+          "MISC": 0.1948,
+          "LOC": 0.4768
+        }
+      }
+    },
+    "qwen3-32b (LLM DE)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2815,
+        "R": 0.7324,
+        "F1": 0.388,
+        "per_label": {
+          "ORG": 0.2732,
+          "PER": 0.5968,
+          "MISC": 0.0317,
+          "LOC": 0.5518
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.5729,
+        "R": 0.956,
+        "F1": 0.6942,
+        "per_label": {
+          "ORG": 0.7017,
+          "PER": 0.9093,
+          "MISC": 0.2373,
+          "LOC": 0.8508
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.7213,
+        "R": 0.8575,
+        "F1": 0.7712,
+        "per_label": {
+          "ORG": 0.8108,
+          "PER": 0.9019,
+          "MISC": 0.4565,
+          "LOC": 0.8616
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.374,
+        "R": 0.592,
+        "F1": 0.4423,
+        "per_label": {
+          "ORG": 0.4114,
+          "PER": 0.8194,
+          "MISC": 0.11,
+          "LOC": 0.4928
+        }
+      }
+    },
+    "llama-3.3-70b-versat (LLM DE)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.3236,
+        "R": 0.7747,
+        "F1": 0.4337,
+        "per_label": {
+          "ORG": 0.2924,
+          "PER": 0.6313,
+          "MISC": 0.05,
+          "LOC": 0.5756
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.6325,
+        "R": 0.956,
+        "F1": 0.7444,
+        "per_label": {
+          "ORG": 0.766,
+          "PER": 0.9191,
+          "MISC": 0.3291,
+          "LOC": 0.8329
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.8334,
+        "R": 0.9017,
+        "F1": 0.857,
+        "per_label": {
+          "ORG": 0.8859,
+          "PER": 0.983,
+          "MISC": 0.6081,
+          "LOC": 0.9306
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.422,
+        "R": 0.6201,
+        "F1": 0.49,
+        "per_label": {
+          "ORG": 0.4699,
+          "PER": 0.8717,
+          "MISC": 0.1866,
+          "LOC": 0.4906
+        }
+      }
+    },
+    "llama-3.1-8b-instant (LLM EN)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2352,
+        "R": 0.545,
+        "F1": 0.3148,
+        "per_label": {
+          "ORG": 0.237,
+          "PER": 0.6005,
+          "MISC": 0.0195,
+          "LOC": 0.3554
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.3785,
+        "R": 0.58,
+        "F1": 0.443,
+        "per_label": {
+          "ORG": 0.428,
+          "PER": 0.8354,
+          "MISC": 0.1124,
+          "LOC": 0.4906
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.4498,
+        "R": 0.4964,
+        "F1": 0.4598,
+        "per_label": {
+          "ORG": 0.4578,
+          "PER": 0.8639,
+          "MISC": 0.1581,
+          "LOC": 0.5039
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.5297,
+        "R": 0.7864,
+        "F1": 0.6156,
+        "per_label": {
+          "ORG": 0.6817,
+          "PER": 0.8441,
+          "MISC": 0.2027,
+          "LOC": 0.7665
+        }
+      }
+    },
+    "llama-4-scout-17b-16 (LLM EN)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2783,
+        "R": 0.6039,
+        "F1": 0.3639,
+        "per_label": {
+          "ORG": 0.2585,
+          "PER": 0.6448,
+          "MISC": 0.038,
+          "LOC": 0.3739
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.4648,
+        "R": 0.6443,
+        "F1": 0.5287,
+        "per_label": {
+          "ORG": 0.4925,
+          "PER": 0.8684,
+          "MISC": 0.2132,
+          "LOC": 0.5107
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.5498,
+        "R": 0.5481,
+        "F1": 0.5421,
+        "per_label": {
+          "ORG": 0.5136,
+          "PER": 0.9126,
+          "MISC": 0.2488,
+          "LOC": 0.5343
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.6835,
+        "R": 0.9308,
+        "F1": 0.776,
+        "per_label": {
+          "ORG": 0.8142,
+          "PER": 0.926,
+          "MISC": 0.4649,
+          "LOC": 0.8556
+        }
+      }
+    },
+    "qwen3-32b (LLM EN)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2553,
+        "R": 0.5891,
+        "F1": 0.3413,
+        "per_label": {
+          "ORG": 0.2608,
+          "PER": 0.5952,
+          "MISC": 0.0285,
+          "LOC": 0.3574
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.4233,
+        "R": 0.6266,
+        "F1": 0.4923,
+        "per_label": {
+          "ORG": 0.4409,
+          "PER": 0.8483,
+          "MISC": 0.1822,
+          "LOC": 0.5055
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.5027,
+        "R": 0.5367,
+        "F1": 0.5105,
+        "per_label": {
+          "ORG": 0.4703,
+          "PER": 0.8889,
+          "MISC": 0.2301,
+          "LOC": 0.525
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.65,
+        "R": 0.9308,
+        "F1": 0.7504,
+        "per_label": {
+          "ORG": 0.7816,
+          "PER": 0.902,
+          "MISC": 0.4165,
+          "LOC": 0.8538
+        }
+      }
+    },
+    "llama-3.3-70b-versat (LLM EN)": {
+      "Pipeline Gold (DE)": {
+        "P": 0.2596,
+        "R": 0.5834,
+        "F1": 0.3422,
+        "per_label": {
+          "ORG": 0.2658,
+          "PER": 0.6147,
+          "MISC": 0.027,
+          "LOC": 0.3572
+        }
+      },
+      "LLM Gold DE (3/3)": {
+        "P": 0.4375,
+        "R": 0.6287,
+        "F1": 0.5056,
+        "per_label": {
+          "ORG": 0.4729,
+          "PER": 0.8867,
+          "MISC": 0.1896,
+          "LOC": 0.5173
+        }
+      },
+      "LLM Gold DE (2/3)": {
+        "P": 0.5259,
+        "R": 0.5457,
+        "F1": 0.5289,
+        "per_label": {
+          "ORG": 0.5121,
+          "PER": 0.9313,
+          "MISC": 0.2558,
+          "LOC": 0.5282
+        }
+      },
+      "LLM Gold EN (3/3)": {
+        "P": 0.6564,
+        "R": 0.9308,
+        "F1": 0.7581,
+        "per_label": {
+          "ORG": 0.8213,
+          "PER": 0.9199,
+          "MISC": 0.3985,
+          "LOC": 0.8735
+        }
+      }
+    }
+  },
+  "notes": "Pipeline systems evaluated on full article text (no truncation). LLM systems evaluated on 8000-char text limit (96.6% entity coverage). LLM EN-input comparisons vs German gold are language-gap lower bounds. LLM EN-input vs LLM Gold EN is the clean English comparison. Pipeline gold loaded from nb03 ner_agreement.csv for consistency with nb05."
+}

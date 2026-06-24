@@ -1,0 +1,84 @@
+{
+  "notebook": "13_scaling_study",
+  "generated_at": "2026-05-20T11:19:03.103985",
+  "n_articles": 183,
+  "note": "Jaccard on (text, label) entity pairs \u2014 no fixed gold standard. Old checkpoints (Qwen7B, Llama70B) used flat dict format. GPT-OSS used merged system+user prompt. Qwen3 used /no_think + 2048 token budget.",
+  "llm_systems": {
+    "qwen-2.5-7b-instruct": {
+      "scale_B": 7,
+      "family": "qwen",
+      "n_used": 183
+    },
+    "llama-3.1-8b-instant": {
+      "scale_B": 8,
+      "family": "llama",
+      "n_used": 183
+    },
+    "openai/gpt-oss-20b": {
+      "scale_B": 20,
+      "family": "gpt",
+      "n_used": 178
+    },
+    "qwen/qwen3-32b": {
+      "scale_B": 32,
+      "family": "qwen3",
+      "n_used": 183
+    },
+    "llama-3.3-70b-versatile": {
+      "scale_B": 70,
+      "family": "llama",
+      "n_used": 183
+    },
+    "openai/gpt-oss-120b": {
+      "scale_B": 120,
+      "family": "gpt",
+      "n_used": 178
+    }
+  },
+  "jaccard_matrix": {
+    "spaCy|qwen-2.5-7b-instruct": 0.1106,
+    "spaCy|llama-3.1-8b-instant": 0.1462,
+    "spaCy|openai/gpt-oss-20b": 0.015,
+    "spaCy|qwen/qwen3-32b": 0.1541,
+    "spaCy|llama-3.3-70b-versatile": 0.1941,
+    "spaCy|openai/gpt-oss-120b": 0.1377,
+    "Stanza|qwen-2.5-7b-instruct": 0.1542,
+    "Stanza|llama-3.1-8b-instant": 0.2017,
+    "Stanza|openai/gpt-oss-20b": 0.0163,
+    "Stanza|qwen/qwen3-32b": 0.222,
+    "Stanza|llama-3.3-70b-versatile": 0.2765,
+    "Stanza|openai/gpt-oss-120b": 0.1942,
+    "Flair|qwen-2.5-7b-instruct": 0.144,
+    "Flair|llama-3.1-8b-instant": 0.303,
+    "Flair|openai/gpt-oss-20b": 0.0317,
+    "Flair|qwen/qwen3-32b": 0.323,
+    "Flair|llama-3.3-70b-versatile": 0.2682,
+    "Flair|openai/gpt-oss-120b": 0.273
+  },
+  "convergence": {
+    "scale_B": 32.0,
+    "jaccard": 0.323
+  },
+  "run_status": {
+    "llama-3.1-8b-instant": {
+      "n_ok": 183,
+      "n_failed": 0,
+      "stop_reason": "complete"
+    },
+    "openai/gpt-oss-20b": {
+      "n_ok": 178,
+      "n_failed": 5,
+      "stop_reason": "complete"
+    },
+    "qwen/qwen3-32b": {
+      "n_ok": 183,
+      "n_failed": 0,
+      "stop_reason": "complete"
+    },
+    "openai/gpt-oss-120b": {
+      "n_ok": 178,
+      "n_failed": 5,
+      "stop_reason": "complete"
+    }
+  }
+}
