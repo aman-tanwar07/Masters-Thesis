@@ -1,0 +1,131 @@
+{
+  "notebook": "13b_en_de_comparison",
+  "generated_at": "2026-05-27T17:27:46.501144",
+  "n_articles": 183,
+  "text_limit": 8000,
+  "conditions": {
+    "en": "English translation input \u2014 entity output in English",
+    "de": "German original input \u2014 entity output in German (no translation)"
+  },
+  "models": {
+    "llama-3.1-8b-instant": {
+      "scale_B": 8,
+      "family": "llama",
+      "provider": "groq"
+    },
+    "meta-llama/llama-4-scout-17b-16e-instruct": {
+      "scale_B": 17,
+      "family": "llama4",
+      "provider": "groq"
+    },
+    "qwen/qwen3-32b": {
+      "scale_B": 32,
+      "family": "qwen3",
+      "provider": "groq"
+    },
+    "llama-3.3-70b-versatile": {
+      "scale_B": 70,
+      "family": "llama",
+      "provider": "groq"
+    }
+  },
+  "jaccard_full": {
+    "spaCy|llama-3.1-8b-instant|en": 0.1507,
+    "Stanza|llama-3.1-8b-instant|en": 0.2081,
+    "Flair|llama-3.1-8b-instant|en": 0.192,
+    "spaCy|llama-3.1-8b-instant|de": 0.2169,
+    "Stanza|llama-3.1-8b-instant|de": 0.2894,
+    "Flair|llama-3.1-8b-instant|de": 0.277,
+    "spaCy|meta-llama/llama-4-scout-17b-16e-instruct|en": 0.1738,
+    "Stanza|meta-llama/llama-4-scout-17b-16e-instruct|en": 0.2384,
+    "Flair|meta-llama/llama-4-scout-17b-16e-instruct|en": 0.2269,
+    "spaCy|meta-llama/llama-4-scout-17b-16e-instruct|de": 0.2836,
+    "Stanza|meta-llama/llama-4-scout-17b-16e-instruct|de": 0.3851,
+    "Flair|meta-llama/llama-4-scout-17b-16e-instruct|de": 0.3757,
+    "spaCy|qwen/qwen3-32b|en": 0.1681,
+    "Stanza|qwen/qwen3-32b|en": 0.2299,
+    "Flair|qwen/qwen3-32b|en": 0.2128,
+    "spaCy|qwen/qwen3-32b|de": 0.2632,
+    "Stanza|qwen/qwen3-32b|de": 0.3686,
+    "Flair|qwen/qwen3-32b|de": 0.3282,
+    "spaCy|llama-3.3-70b-versatile|en": 0.1776,
+    "Stanza|llama-3.3-70b-versatile|en": 0.2445,
+    "Flair|llama-3.3-70b-versatile|en": 0.2236,
+    "spaCy|llama-3.3-70b-versatile|de": 0.2868,
+    "Stanza|llama-3.3-70b-versatile|de": 0.3897,
+    "Flair|llama-3.3-70b-versatile|de": 0.3793
+  },
+  "de_en_delta_flair": {
+    "llama-3.1-8b-instant": {
+      "en_jaccard": 0.192,
+      "de_jaccard": 0.277,
+      "delta": 0.085
+    },
+    "meta-llama/llama-4-scout-17b-16e-instruct": {
+      "en_jaccard": 0.2269,
+      "de_jaccard": 0.3757,
+      "delta": 0.1488
+    },
+    "qwen/qwen3-32b": {
+      "en_jaccard": 0.2128,
+      "de_jaccard": 0.3282,
+      "delta": 0.1155
+    },
+    "llama-3.3-70b-versatile": {
+      "en_jaccard": 0.2236,
+      "de_jaccard": 0.3793,
+      "delta": 0.1557
+    }
+  },
+  "run_status": {
+    "llama-3.1-8b-instant_en": {
+      "n_ok": 183,
+      "n_failed": 0,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "llama-3.1-8b-instant_de": {
+      "n_ok": 182,
+      "n_failed": 1,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "meta-llama/llama-4-scout-17b-16e-instruct_en": {
+      "n_ok": 183,
+      "n_failed": 0,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "meta-llama/llama-4-scout-17b-16e-instruct_de": {
+      "n_ok": 181,
+      "n_failed": 2,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "qwen/qwen3-32b_en": {
+      "n_ok": 183,
+      "n_failed": 0,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "qwen/qwen3-32b_de": {
+      "n_ok": 180,
+      "n_failed": 3,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "llama-3.3-70b-versatile_en": {
+      "n_ok": 178,
+      "n_failed": 5,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    },
+    "llama-3.3-70b-versatile_de": {
+      "n_ok": 162,
+      "n_failed": 21,
+      "stop_reason": "complete",
+      "text_limit": 8000
+    }
+  },
+  "notes": "All runs at 8000 char text limit (96.6% entity coverage by position). Condition A (EN input): LLM English entity strings back-translated EN\u2192DE via OPUS-MT before Jaccard \u2014 conservative lower bound due to surface form mismatches after isolated-string translation. Condition B (DE input): LLM German entity strings compared directly to pipeline gold \u2014 methodologically clean comparison. DE prompt includes explicit \"do not translate\" instruction. Qwen 7B uses HuggingFace Inference API; skipped if all providers exhausted."
+}

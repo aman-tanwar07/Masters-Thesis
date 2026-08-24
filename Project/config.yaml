@@ -1,110 +1,132 @@
 # =============================================================================
-# config.yaml — Global configuration for thesis pipeline
-# Edit paths and hyperparameters here; import in all notebooks/scripts.
+# config.yaml - configuration for the thesis experiments
+#
+# Notebooks read `project.random_seed` and the `paths` block from this file.
+# The remaining sections record the settings the experiments were actually run
+# with, so the parameters are documented in one place rather than scattered
+# across notebooks.
 # =============================================================================
 
 project:
-  name: "nlp-pipeline-vs-llm-thesis"
-  author: "University of Trier"
-  random_seed: 42  # Used everywhere — numpy, torch, sklearn, transformers
+  name: "pipelines-vs-llms-german-newspaper"
+  random_seed: 42          # set for numpy, random, and torch in every notebook
 
 # -----------------------------------------------------------------------------
-# PATHS (relative to project root; override in notebooks via config['paths'])
+# PATHS
+# Notebooks run in Colab with the project mounted from Google Drive, so paths
+# resolve against PROJECT_ROOT (set at the top of each notebook) rather than
+# against the repository root.
 # -----------------------------------------------------------------------------
 paths:
-  raw_data:       "data/raw/"
-  processed_data: "data/processed/"
-  samples:        "data/samples/"
-  outputs:        "outputs/"
-  figures:        "outputs/figures/"
-  cache:          "data/processed/cache/"   # disk cache for translations etc.
+  raw_data:       "Data/Raw/"
+  processed_data: "Data/Processed/"
+  samples:        "Data/Samples/"
+  outputs:        "Outputs/"
 
 # -----------------------------------------------------------------------------
 # CORPUS
+# 1,149 articles were collected; 1,115 remain after removing non-German
+# articles and articles under 50 words.
 # -----------------------------------------------------------------------------
 corpus:
-  expected_min_articles: 900
-  expected_max_articles: 1100
+  n_articles: 1115
   language: "de"
-  date_range: ["2015-01-01", "2025-12-31"]
-  encoding: "utf-8"
-  text_column: "text"          # adjust to match your CSV column name
-  date_column: "date"          # adjust to match your CSV column name
-  source_column: "source"      # adjust to match your CSV column name
+  date_range: ["2015-01-12", "2025-06-27"]
+  sources: ["Luxemburger Wort", "Frankfurter Allgemeine Zeitung",
+            "SZ Sueddeutsche Zeitung", "Trierischer Volksfreund"]
+  min_word_count: 50       # articles below this were dropped as extraction noise
 
 # -----------------------------------------------------------------------------
 # VALIDATION SAMPLE
+# 199 articles were drawn; 183 have predictions from every system; 159 is the
+# intersection of the four LLM German-input runs, used for the NER comparison.
 # -----------------------------------------------------------------------------
 sampling:
-  total_n: 200
-  stratify_by: ["year_bin", "source_type", "article_length_bin"]
-  year_bins: [[2015, 2017], [2018, 2020], [2021, 2023], [2024, 2025]]
-  length_bins: [0, 300, 600, 99999]  # words: short / medium / long
-  sample_seed: 42  # locked — never change after Week 1
+  drawn_n: 199
+  complete_coverage_n: 183
+  ner_intersection_n: 159
+  stratify_by: ["source", "year_bin"]
+  seed: 42
 
 # -----------------------------------------------------------------------------
-# TRANSLATION
+# TRANSLATION (English condition)
 # -----------------------------------------------------------------------------
 translation:
-  primary_model: "opus-mt"       # via EasyNMT
-  fallback_model: "nllb-200-distilled-600M"
+  model: "Helsinki-NLP/opus-mt-de-en"
+  level: "sentence"        # sentence-level translation, then reassembled
   source_lang: "de"
   target_lang: "en"
-  comet_quality_threshold: 0.70  # flag articles below this for review
-  batch_size: 32
+  quality_check: "bertscore"
+  quality_flag_below: 0.75 # flagged for inspection, not excluded
 
 # -----------------------------------------------------------------------------
-# NER PIPELINE
+# NER
 # -----------------------------------------------------------------------------
 ner:
   spacy_model: "de_core_news_lg"
   stanza_lang: "de"
   flair_model: "flair/ner-german-large"
-  entity_types: ["PER", "ORG", "LOC", "MISC"]
-  # Cross-model agreement thresholds
-  full_agreement_threshold: 3    # all 3 models agree → high confidence
-  partial_agreement_threshold: 2 # 2/3 agree → flag for review
+  entity_types: ["PER", "LOC", "ORG", "MISC"]
+  llm_text_limit: 8000     # characters; covers 96.6% of entities by position
+  agreement_threshold: 3   # 3/3 for the strict consensus reference
+  majority_threshold: 2    # 2/3 variant, reported as a sensitivity check
 
 # -----------------------------------------------------------------------------
-# TOPIC MODELING
+# TOPIC CLASSIFICATION
+# BERTopic is used for taxonomy discovery only. It is never used as a
+# classifier and never as a reference.
 # -----------------------------------------------------------------------------
 topics:
   bertopic_embedding_model: "paraphrase-multilingual-MiniLM-L12-v2"
-  bertopic_min_topic_size: 10
-  bertopic_nr_topics: "auto"
-  lda_num_topics: 15
-  lda_passes: 10
-  temporal_bins: "year"  # aggregate by year for temporal trend analysis
+  n_categories: 7
+  nli_models:
+    - "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli"
+    - "joeddav/xlm-roberta-large-xnli"
+    - "sileod/deberta-v3-base-tasksource-nli"
+  nli_hypothesis_template: "Das Hauptthema dieses Artikels ist {}."
+  nli_text_limit: 500      # characters
+  nli_multi_label: false
+  llm_text_limit: 6000     # characters
 
 # -----------------------------------------------------------------------------
-# LLM BASELINES
+# LLM INFERENCE
+# All LLM inference was served through the Groq API. Sleep values are the
+# inter-request delays used to stay within free-tier rate limits.
+# All four models were announced for deprecation by the provider in June 2026.
 # -----------------------------------------------------------------------------
 llm:
-  primary_model: "mistralai/Mistral-7B-Instruct-v0.3"
-  fallback_model: "meta-llama/Llama-3-8b-instruct"  # if Mistral rate-limited
-  quantization: "4bit"           # bitsandbytes 4-bit for Colab free tier
-  temperature: 0.0               # deterministic for classification
-  consistency_temperature: 0.7   # for self-consistency sampling
-  consistency_n_runs: 10         # sample k outputs for majority vote
-  consistency_agreement_threshold: 0.80  # flag below 80% agreement
-  max_new_tokens: 256
-  hf_inference_api: true         # use HF Inference API (free) vs local
+  provider: "groq"
+  temperature: 0.0         # deterministic decoding throughout
+  models:
+    llama-3.1-8b-instant:
+      sleep_ner: 2.0
+      sleep_topic: 2.0
+    meta-llama/llama-4-scout-17b-16e-instruct:
+      sleep_ner: 4.0
+      sleep_topic: 4.0
+    qwen/qwen3-32b:
+      sleep_ner: 3.0
+      sleep_topic: 3.0
+      note: "requires /no_think prefix to suppress reasoning output"
+    llama-3.3-70b-versatile:
+      sleep_ner: 35.0
+      sleep_topic: 45.0
+  retry_backoff: [30, 60, 120]   # seconds
+  max_tokens_ner: 1024           # 2048 for qwen3
+  max_tokens_topic: 50
 
 # -----------------------------------------------------------------------------
 # EVALUATION
 # -----------------------------------------------------------------------------
 evaluation:
-  comet_model: "Unbabel/wmt22-comet-da"
-  bertscore_model: "bert-base-multilingual-cased"
-  bootstrap_n_resamples: 2000
-  bootstrap_ci: 0.95
-  kappa_min_exploratory: 0.60
-  kappa_min_confirmatory: 0.80
+  ner_matching: "exact"    # normalised surface form and label must both match
+  averaging: "macro"       # computed per article, then averaged across articles
+  agreement_metric: "fleiss_kappa"
+  significance_test: "wilcoxon"
 
 # -----------------------------------------------------------------------------
-# COLAB-SPECIFIC
+# EXECUTION
 # -----------------------------------------------------------------------------
-colab:
-  drive_mount_path: "/content/drive/MyDrive/thesis/"
-  checkpoint_every_n: 100   # save cache every N articles processed
-  session_safe_batch_size: 50  # conservative batch to survive timeouts
+execution:
+  environment: "google_colab"
+  checkpoint_every_n: 10   # articles between checkpoint writes

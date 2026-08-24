@@ -1,0 +1,25 @@
+{
+  "drawn_at": "2026-03-28T16:17:10.048228",
+  "random_seed": 42,
+  "stratified_by": [
+    "year_bin",
+    "source"
+  ],
+  "year_bins": [
+    "2015-2017",
+    "2018-2020",
+    "2021-2023",
+    "2024-2025"
+  ],
+  "sources": [
+    "SZ Süddeutsche Zeitung",
+    "Luxemburger Wort",
+    "Frankfurter Allgemeine Zeitung",
+    "Trierischer Volksfreund"
+  ],
+  "note": "Sample locked at draw time; do not redraw. The draw was made against the corpus as it stood on 2026-03-28 (1,125 articles). Subsequent cleaning reduced the corpus to 1,115 and the working sample to 199. 183 articles carry predictions from every system; 159 is the intersection of the four LLM German-input runs used for the NER comparison.",
+  "sample_n_drawn": 200,
+  "corpus_at_draw_time": 1125,
+  "sample_n_final": 199,
+  "corpus_final": 1115
+}

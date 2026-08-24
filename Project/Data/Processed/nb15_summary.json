@@ -1,0 +1,172 @@
+{
+  "notebook": "NB15 Topic Classification",
+  "timestamp": "2026-06-19T18:33:25.824039",
+  "n_validation": 183,
+  "n_shared": 183,
+  "n_pipeline_gold": 36,
+  "n_llm_gold_de": 134,
+  "n_llm_gold_majority": 181,
+  "inter_system_kappa": {
+    "nli_pipelines": 0.2741,
+    "llm_de_gold_models": 0.7738
+  },
+  "pipeline_gold_results": [
+    {
+      "system": "NLI_mDeBERTa-NLI",
+      "n": 36,
+      "accuracy": 1.0,
+      "kappa": 1.0,
+      "macro_f1": 0.8571
+    },
+    {
+      "system": "NLI_XLM-RoBERTa-NLI",
+      "n": 36,
+      "accuracy": 1.0,
+      "kappa": 1.0,
+      "macro_f1": 0.8571
+    },
+    {
+      "system": "NLI_DeBERTa-TaskSource",
+      "n": 36,
+      "accuracy": 1.0,
+      "kappa": 1.0,
+      "macro_f1": 0.8571
+    },
+    {
+      "system": "LLM_llama-3_1-8b-instant_DE",
+      "n": 36,
+      "accuracy": 0.6111,
+      "kappa": 0.5172,
+      "macro_f1": 0.3807
+    },
+    {
+      "system": "LLM_llama-3_1-8b-instant_EN",
+      "n": 36,
+      "accuracy": 0.5833,
+      "kappa": 0.5,
+      "macro_f1": 0.432
+    },
+    {
+      "system": "LLM_meta-llama_llama-4-scout-17b-16e-instruct_DE",
+      "n": 36,
+      "accuracy": 0.6111,
+      "kappa": 0.5218,
+      "macro_f1": 0.4679
+    },
+    {
+      "system": "LLM_meta-llama_llama-4-scout-17b-16e-instruct_EN",
+      "n": 36,
+      "accuracy": 0.6389,
+      "kappa": 0.5585,
+      "macro_f1": 0.4544
+    },
+    {
+      "system": "LLM_qwen_qwen3-32b_DE",
+      "n": 36,
+      "accuracy": 0.5833,
+      "kappa": 0.5018,
+      "macro_f1": 0.446
+    },
+    {
+      "system": "LLM_qwen_qwen3-32b_EN",
+      "n": 36,
+      "accuracy": 0.5833,
+      "kappa": 0.5,
+      "macro_f1": 0.4694
+    },
+    {
+      "system": "LLM_llama-3_3-70b-versatile_DE",
+      "n": 36,
+      "accuracy": 0.6667,
+      "kappa": 0.5921,
+      "macro_f1": 0.5071
+    },
+    {
+      "system": "LLM_llama-3_3-70b-versatile_EN",
+      "n": 36,
+      "accuracy": 0.6111,
+      "kappa": 0.525,
+      "macro_f1": 0.4753
+    }
+  ],
+  "llm_gold_de_results": [
+    {
+      "system": "NLI_mDeBERTa-NLI",
+      "n": 134,
+      "accuracy": 0.3134,
+      "kappa": 0.2099,
+      "macro_f1": 0.2931
+    },
+    {
+      "system": "NLI_XLM-RoBERTa-NLI",
+      "n": 134,
+      "accuracy": 0.4552,
+      "kappa": 0.3601,
+      "macro_f1": 0.4444
+    },
+    {
+      "system": "NLI_DeBERTa-TaskSource",
+      "n": 134,
+      "accuracy": 0.5299,
+      "kappa": 0.4399,
+      "macro_f1": 0.4883
+    },
+    {
+      "system": "LLM_llama-3_1-8b-instant_DE",
+      "n": 134,
+      "accuracy": 0.8806,
+      "kappa": 0.8481,
+      "macro_f1": 0.8222
+    },
+    {
+      "system": "LLM_llama-3_1-8b-instant_EN",
+      "n": 134,
+      "accuracy": 0.8806,
+      "kappa": 0.8487,
+      "macro_f1": 0.8714
+    },
+    {
+      "system": "LLM_meta-llama_llama-4-scout-17b-16e-instruct_DE",
+      "n": 134,
+      "accuracy": 1.0,
+      "kappa": 1.0,
+      "macro_f1": 1.0
+    },
+    {
+      "system": "LLM_meta-llama_llama-4-scout-17b-16e-instruct_EN",
+      "n": 134,
+      "accuracy": 0.9478,
+      "kappa": 0.934,
+      "macro_f1": 0.9359
+    },
+    {
+      "system": "LLM_qwen_qwen3-32b_DE",
+      "n": 134,
+      "accuracy": 1.0,
+      "kappa": 1.0,
+      "macro_f1": 1.0
+    },
+    {
+      "system": "LLM_qwen_qwen3-32b_EN",
+      "n": 134,
+      "accuracy": 0.9254,
+      "kappa": 0.9059,
+      "macro_f1": 0.9265
+    },
+    {
+      "system": "LLM_llama-3_3-70b-versatile_DE",
+      "n": 134,
+      "accuracy": 1.0,
+      "kappa": 1.0,
+      "macro_f1": 1.0
+    },
+    {
+      "system": "LLM_llama-3_3-70b-versatile_EN",
+      "n": 134,
+      "accuracy": 0.9403,
+      "kappa": 0.9247,
+      "macro_f1": 0.9263
+    }
+  ],
+  "language_note": "All category labels, descriptions, NLI hypotheses, and LLM DE prompts are in German. LLM EN condition uses English labels and descriptions with English article text. All predictions normalised to German label space for cross-condition comparability."
+}
