@@ -113,4 +113,3 @@ no repository-level requirements file. The main dependencies are `spacy`
 ## Author
 
 Aman Tanwar, MSc Natural Language Processing, University of Trier.
-Supervised by Dr Simon Werner.
